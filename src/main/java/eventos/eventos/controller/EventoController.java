@@ -3,7 +3,8 @@ package eventos.eventos.controller;
 import eventos.eventos.dto.EventoDTO;
 import eventos.eventos.model.Evento;
 import eventos.eventos.service.EventoService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
