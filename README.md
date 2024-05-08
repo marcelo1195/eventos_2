@@ -22,7 +22,6 @@ O objetivo principal do projeto é facilitar a organização e gestão de evento
 
 **Arquitetura**
 - **Modelo (Model):** Classes que representam a entidade `Evento` e a lógica de negócios.
-- **Visão (View):** Templates HTML criados com Thymeleaf para a apresentação da interface do usuário.
 - **Controlador (Controller):** Classes responsáveis pelo processamento das requisições, interagindo com os modelos e selecionando as views apropriadas.
 
 **Configuração e Execução**
