@@ -28,7 +28,7 @@ public class Evento {
     @Size(max = 100, message = "O nome do local não pode exeder 100 caracteres")
     private String local;
 
-    @Column(name = "data_evento")
+    @Column(name = "dataEvento")
     @NotNull(message = "A data do evento não pode ser nula")
     @Future(message = "A data do evento deve ser futura")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

@@ -10,9 +10,10 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface EventoRepository extends JpaRepository <Evento, Long> {
-    @Query("SELECT e FROM Evento e WHERE e.dataEVENTO = :data")
+    @Query("SELECT e FROM Evento e WHERE e.dataEvento = :data")
     List<Evento> findByDataEvento(@Param("data") LocalDate dataEvento);
 
-    @Query("SELECT e FROM Evento e WHERE e.dataEvento BETWEEN :inicio AND : fim")
+    @Query("SELECT e FROM Evento e WHERE e.dataEvento BETWEEN :inicio AND :fim")
     List<Evento> findEventosBetweenDates(@Param("inicio") LocalDate inicio, @Param("fim") LocalDate fim);
+
 }
