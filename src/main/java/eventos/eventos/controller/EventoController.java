@@ -1,5 +1,6 @@
 package eventos.eventos.controller;
 
+import eventos.eventos.dto.EventoDTO;
 import eventos.eventos.model.Evento;
 import eventos.eventos.service.EventoService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -42,16 +43,23 @@ public class EventoController {
                 }
                 return ResponseEntity.ok(eventos);
     }
-
-    // Endpoint para criar um novo evento
     @PostMapping
-    public ResponseEntity<?> createEvento(@RequestBody @Valid Evento evento, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return ResponseEntity.badRequest().body(bindingResult.getAllErrors());
-        }
+    public ResponseEntity<?> createEvento(@RequestBody @Valid EventoDTO eventoDTO) {
+        Evento evento = convertToEntity(eventoDTO);
         Evento novoEvento = eventoService.save(evento);
         return ResponseEntity.ok(novoEvento);
     }
+
+    // Método auxiliar para converter DTO para entidade
+    private Evento convertToEntity(EventoDTO eventoDTO) {
+        Evento evento = new Evento();
+        evento.setNome(eventoDTO.getNome());
+        evento.setLocal(eventoDTO.getLocal());
+        evento.setDataEvento(eventoDTO.getDataEvento());
+        evento.setPreco(eventoDTO.getPreco());
+        return evento;
+    }
+
     // Buscar todos os eventos
     @GetMapping
     public ResponseEntity<List<Evento>> getAllEventos(){
