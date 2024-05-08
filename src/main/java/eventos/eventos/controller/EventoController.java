@@ -44,14 +44,8 @@ public class EventoController {
                 }
                 return ResponseEntity.ok(eventos);
     }
-    @PostMapping
-    public ResponseEntity<?> createEvento(@RequestBody @Valid EventoDTO eventoDTO) {
-        Evento evento = convertToEntity(eventoDTO);
-        Evento novoEvento = eventoService.save(evento);
-        return ResponseEntity.ok(novoEvento);
-    }
 
-    // Método auxiliar para converter DTO para entidade
+    // DTO para entidade
     private Evento convertToEntity(EventoDTO eventoDTO) {
         Evento evento = new Evento();
         evento.setNome(eventoDTO.getNome());
@@ -61,6 +55,12 @@ public class EventoController {
         return evento;
     }
 
+    @PostMapping
+    public ResponseEntity<?> createEvento(@RequestBody @Valid EventoDTO eventoDTO) {
+        Evento evento = convertToEntity(eventoDTO);
+        Evento novoEvento = eventoService.save(evento);
+        return ResponseEntity.ok(novoEvento);
+    }
     // Buscar todos os eventos
     @GetMapping
     public ResponseEntity<List<Evento>> getAllEventos(){
